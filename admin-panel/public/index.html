@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhatsApp Bot Admin</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Login Screen -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="login-logo">
+        <i class="fab fa-whatsapp"></i>
+        <h1>Bot Admin</h1>
+        <p>WhatsApp Order Management</p>
+      </div>
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="login-username" placeholder="admin" required />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="login-password" placeholder="••••••••" required />
+        </div>
+        <div id="login-error" class="error-msg hidden"></div>
+        <button type="submit" class="btn btn-primary btn-block" id="login-btn">
+          <span>Login</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div id="app" class="app hidden">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <i class="fab fa-whatsapp sidebar-logo"></i>
+        <span>Bot Admin</span>
+        <button class="sidebar-close" id="sidebar-close"><i class="fas fa-times"></i></button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="dashboard">
+          <i class="fas fa-chart-line"></i><span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-page="bot-control">
+          <i class="fab fa-whatsapp"></i><span>Bot Control</span>
+          <span class="nav-badge" id="bot-status-badge">●</span>
+        </a>
+        <a href="#" class="nav-item" data-page="users">
+          <i class="fas fa-users"></i><span>Users</span>
+        </a>
+        <a href="#" class="nav-item" data-page="products">
+          <i class="fas fa-box"></i><span>Products</span>
+        </a>
+        <a href="#" class="nav-item" data-page="orders">
+          <i class="fas fa-shopping-cart"></i><span>Orders</span>
+        </a>
+        <a href="#" class="nav-item" data-page="settings">
+          <i class="fas fa-cog"></i><span>Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="admin-info" id="admin-info">
+          <i class="fas fa-user-shield"></i>
+          <span id="admin-name">Admin</span>
+        </div>
+        <button class="btn-icon" id="logout-btn" title="Logout">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-bar">
+        <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+        <h2 class="page-title" id="page-title">Dashboard</h2>
+        <div class="top-bar-right">
+          <div class="bot-status-dot" id="bot-dot"></div>
+          <span id="bot-status-text">Connecting...</span>
+        </div>
+      </header>
+
+      <div class="content-area" id="content-area">
+        <!-- Pages rendered by JS -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">Modal</h3>
+        <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-footer" id="modal-footer"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast-container"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
